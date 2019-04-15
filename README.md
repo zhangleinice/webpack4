@@ -67,7 +67,21 @@
 ```
 4. css-loader, bable等已经做了相应的处理，很多时候不需要写。
 
-### test
+### babel-loader
+1. es6语法转化
+   - "@babel/preset-env"
+2. react语法支持
+   - "@babel/preset-react"
+3. 可以写在babel-loader的options里，也可以写在.babelrc文件里
+4. 从右往左执行，先转react，再进行es6转es5
+
+### Tree Shaking
+1. 移除 JavaScript 上下文中的未引用代码(dead-code);
+2. 只支持es module
+3. optimization.usedExports = true
+4. pakeage.json.sideEffects = []
+
+### devlopment和product环境区分打包
 
 
 

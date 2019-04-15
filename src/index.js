@@ -1,6 +1,39 @@
 import avatar from './assets/24npgmv.jpg';
 // import  styles from './assets/index.less';
 import './assets/index.less';
+// 写业务逻辑
+// "useBuiltIns": "usage"设置后，这段代码也可以去掉
+// import "@babel/polyfill";
+
+import React, { Component } from 'react';
+import ReactDom from 'react-dom';
+
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  };
+    }
+    render() {
+        return (
+            <div>hello react!</div>
+        );
+    }
+}
+
+ReactDom.render(<App/>, document.getElementById('root'));
+
+// export default App;
+
+// babel test
+const arr = [
+    new Promise(() => {}),
+    new Promise(() => {})
+];
+arr.map(item => {
+    console.log('object');
+})
+
 
 const render = () => {
     const dom = document.getElementById('root');
@@ -17,4 +50,4 @@ const render = () => {
     dom.append(icon);
 }
 
-render();
+// render();
