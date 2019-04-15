@@ -1,0 +1,118 @@
+// ----- variable ----- //
+.c-color-red {
+    color: #f5222d;
+}
+.c-color-green {
+    color: #00a854;
+}
+.c-color-gray {
+    color: #666;
+}
+.c-color-gray-light {
+    color: #999;
+}
+.c-color-yellow {
+    color: #ffbf00;
+}
+.c-color-brown {
+    color: #be9310;
+}
+.c-color-blue {
+    color: #108ee9;
+}
+.c-font-12 {
+    font-size: 12px;
+}
+.c-font-14 {
+    font-size: 14px;
+}
+.c-font-16 {
+    font-size: 16px;
+}
+.c-font-18 {
+    font-size: 18px;
+}
+.c-font-20 {
+    font-size: 20px;
+}
+// ----- utils ----- //
+// 浮动清除
+.clearfix() {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+.clearfix {
+    .clearfix();
+}
+
+// 文字省略符...
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ellipsis (@line) when (@line >= 2) {
+    /* autoprefixer: off */
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// flex布局
+.flexbox() {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-wc-hc() {
+    .flexbox();
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-ws-hc() {
+    .flexbox();
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flex-we-hc() {
+    .flexbox();
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.flex-wb-hc() {
+    .flexbox();
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-wc-hs() {
+    .flexbox();
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.flex-wc-he() {
+    .flexbox();
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.flex-ws-hs() {
+    .flexbox();
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.flex-wb-hs() {
+    .flexbox();
+    align-items: flex-start;
+    justify-content: space-between;
+}

@@ -1,0 +1,74 @@
+### webpack4（查看英文文档学习）
+
+```js
+    npx webpack      // 运行项目内webpack
+    npm init -y      //快捷初始化
+    webpack --config webpackconfig.js   //修改默认配置
+```
+
+### entry
+
+### output
+* publicPath
+
+### loader
+
+* 文件
+1. file-loader
+    - 打包字体图标
+    - 不用css modules
+2. url-loader
+    - limit： 小于limit，会被转化为base64格式，大于limit使用file-loader
+    - 如果图片只有1，2kb，打包成base64js文件很不错，不用多发一次http请求，如果图片太大，打包成base64，则会加载js比较慢
+
+* 样式
+1. style-loader
+2. css-loader
+   - 配置css模块化
+   - importLoaders: 保证无论在js引入less，还是less中引入都重新经过less-loader，postcss-loader
+   - modules： 模块化css
+3. less-loader
+4. postcss-loader
+   - postcss.config.js
+
+### plugins
+* 当webpack运行到一定时刻时，做一些事情。就如生命周期一样
+  
+1. html-webpack-plugin
+   - 打包之后，自动生成html，并自动引入打包过后的js
+   - template：加入
+2. clean-webpack-plugin
+   - 打包之前，先删除之前的打包文件
+
+### source-map
+* 是一个映射关系，它知道打包过后的js文件，对应src目录下的多少行，方便调试
+1. development: cheap-module-eval-source-map
+2. product: cheap-module-source-map
+
+### webpack-dev-server
+* 打包生成的文件放在内存里面
+1. open
+2. compress
+3. proxy
+4. contentBase
+5. hot
+
+### Hot Module Replacement 模块热替换
+1. devServer.hot设置true
+2. new webpack.HotModuleReplacementPlugin()
+3. 编写需要更新的模块代码
+```js
+    if (module.hot) {
+        module.hot.accept('./print.js', function() {
+            console.log('Accepting the updated printMe module!');
+            printMe();
+        })
+    }
+```
+4. css-loader, bable等已经做了相应的处理，很多时候不需要写。
+
+### test
+
+
+
+
