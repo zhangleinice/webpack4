@@ -81,7 +81,20 @@
 3. optimization.usedExports = true
 4. pakeage.json.sideEffects = []
 
-### devlopment和product环境区分打包
+### devlopment和production环境区分打包
+1. devlopment
+    - cheap-module-eval-source-map
+    - new Webpack.HotModuleReplacementPlugin()
+    - devServer
+    - optimization.usedExports = true
+2. production
+    - cheap-module-source-map
+3. common 
+    - entry
+    - output
+    - module
+    - new HtmlWebpackPlugin(), new CleanWebpackPlugin(),
+        
 
 
 
