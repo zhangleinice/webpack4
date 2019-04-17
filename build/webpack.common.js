@@ -7,7 +7,7 @@ module.exports = {
     entry: {
         // 打包生成多文件
         home: './src/index.js',
-        common: './src/index.js'
+        // common: './src/index.js'
     },
     module: {
         rules: [
@@ -62,6 +62,11 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     output: {
         // 对应entry的文件，生成多个文件
         filename: '[name].js',

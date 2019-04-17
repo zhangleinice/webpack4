@@ -7,12 +7,16 @@ import './assets/index.less';
 
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import _ from 'lodash';
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {  };
+    }
+    componentDidMount() {
+        console.log(_.join(["xxx", "yyy", "zzz"], "***"))
     }
     render() {
         return (

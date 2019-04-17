@@ -94,6 +94,14 @@
     - output
     - module
     - new HtmlWebpackPlugin(), new CleanWebpackPlugin(),
+
+### code splitting
+1. 拆分代码成多个小文件，浏览器并行加载，提升性能
+2. 代码分割，和webpack无关
+3. webpack中实现代码分割有两种方式
+    - 同步代码：只需在webpack.common.js中做optimization.splitChunks.chunks = 'all'
+    - 异步代码：无需配置，自动进行代码分割
+
         
 
 
