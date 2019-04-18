@@ -101,6 +101,30 @@
 3. webpack中实现代码分割有两种方式
     - 同步代码：只需在webpack.common.js中做optimization.splitChunks.chunks = 'all'
     - 异步代码：无需配置，自动进行代码分割
+4. splitchunks
+```js
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+              vendors: {
+                test: /[\\/]node_modules[\\/]/,
+                // priority 越大优先级越高
+                priority: -10,
+                filename: 'vendors.js'
+              },
+              default: false
+            }
+        }
+    },
+```
 
         
 

@@ -8,6 +8,7 @@ import './assets/index.less';
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import _ from 'lodash';
+import { add } from './common/index.js';
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     }
     componentDidMount() {
         console.log(_.join(["xxx", "yyy", "zzz"], "***"))
+        console.log(add(1, 2));
     }
     render() {
         return (
