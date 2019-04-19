@@ -63,28 +63,31 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     optimization: {
+        // 通常设置成这样就可以了
         splitChunks: {
+            // 默认async 异步加载性能好
             chunks: 'all',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            name: true,
-            cacheGroups: {
-              vendors: {
-                test: /[\\/]node_modules[\\/]/,
-                // priority 越大优先级越高
-                priority: -10,
-                filename: 'vendors.js'
-              },
-              default: {
-                filename: 'common.js',
-                priority: -20,
-                reuseExistingChunk: true
-              }
-            }
+            // minSize: 30000,
+            // maxSize: 0,
+            // // minChunks：1使用1次就进行代码分割
+            // minChunks: 1,
+            // maxAsyncRequests: 5,
+            // maxInitialRequests: 3,
+            // automaticNameDelimiter: '~',
+            // name: true,
+            // cacheGroups: {
+            //   vendors: {
+            //     test: /[\\/]node_modules[\\/]/,
+            //     // priority 越大优先级越高
+            //     priority: -10,
+            //     // filename: 'vendors.js'
+            //   },
+            //   default: {
+            //     // filename: 'common.js',
+            //     priority: -20,
+            //     reuseExistingChunk: true
+            //   }
+            // }
         }
     },
     output: {

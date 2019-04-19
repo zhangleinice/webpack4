@@ -7,7 +7,7 @@ import './assets/index.less';
 
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import _ from 'lodash';
+// import _ from 'lodash';
 import { add } from './common/index.js';
 
 
@@ -17,7 +17,7 @@ class App extends Component {
         this.state = {  };
     }
     componentDidMount() {
-        console.log(_.join(["xxx", "yyy", "zzz"], "***"))
+        // console.log(_.join(["xxx", "yyy", "zzz"], "***"))
         console.log(add(1, 2));
     }
     render() {
@@ -27,7 +27,7 @@ class App extends Component {
     }
 }
 
-ReactDom.render(<App/>, document.getElementById('root'));
+// ReactDom.render(<App/>, document.getElementById('root'));
 
 // export default App;
 
@@ -57,3 +57,32 @@ const render = () => {
 }
 
 // render();
+
+// 懒加载
+// function getComponent() {
+//     return import('lodash').then(() => {
+//         var ele = document.createElement('div');
+//         ele.innerHTML = _.join(['hello', 'react'], '----')
+//         return ele;
+//     })
+// }
+
+// document.addEventListener('click', () => {
+//     getComponent().then(ele => {
+//         document.body.appendChild(ele)
+//     })
+// })
+
+// 异步加载lodash
+async function getComponent() {
+	const { default: _ } = await import(/* webpackChunkName:"lodash" */'lodash');
+	const element = document.createElement('div');
+	element.innerHTML = _.join(['Dell', 'Lee'], '-');
+	return element;
+}
+
+document.addEventListener('click', () =>{
+	getComponent().then(element => {
+		document.body.appendChild(element);
+	});
+})

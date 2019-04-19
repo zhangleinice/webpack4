@@ -102,6 +102,7 @@
     - 同步代码：只需在webpack.common.js中做optimization.splitChunks.chunks = 'all'
     - 异步代码：无需配置，自动进行代码分割
 4. splitchunks
+   - chunks默认async
 ```js
     optimization: {
         splitChunks: {
@@ -125,6 +126,16 @@
         }
     },
 ```
+
+### 懒加载，Prefetching/Preloading
+1. 异步代码提升性能
+2. 同步缓存代码的性能提升是有限的
+3. 提高代码利用率提升性能
+4. Preloading
+   - 通过缓存，第一次引入的js过大，代码利用率低
+5. Prefetching
+   - 浏览器会在**空闲**的时候，下载main.js, 并缓存到disk。当有页面使用的时候，直接从disk缓存中读取
+   - 代码利用率高
 
         
 
