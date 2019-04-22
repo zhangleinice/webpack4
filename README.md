@@ -136,8 +136,27 @@
 5. Prefetching
    - 浏览器会在**空闲**的时候，下载main.js, 并缓存到disk。当有页面使用的时候，直接从disk缓存中读取
    - 代码利用率高
+6. preloading缓存，只是提高了第二次加载的速度。但是会降低第一次加载的速度
+7. 写高性能的js时，考虑的不是缓存的问题，而是考虑代码使用率。 控制台：command+shift+p
 
-        
+### 打包分析
+1. webpack --profile --json > stats.json
+
+### css代码分割
+1. MiniCssExtractPlugin
+2. OptimizeCSSAssetsPlugin 压缩css
+
+### 浏览器缓存
+1. output中fileName加入 [contenthash],文件改动contenthash就会改变，如果不变则使用缓存的js
+
+### shimming垫片
+```js
+    new webpack.ProvidePlugin({
+        '$': 'jquery'
+    }),
+```
+### 环境变量的使用
+
 
 
 

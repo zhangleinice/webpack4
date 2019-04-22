@@ -86,3 +86,12 @@ document.addEventListener('click', () =>{
 		document.body.appendChild(element);
 	});
 })
+
+
+
+// 提高代码利用率，点击的时候才加载
+document.addEventListener('click', () => {
+    return import(/* webpackPrefetch: true */ './click').then(({default: func}) => {
+        func()
+    })
+})

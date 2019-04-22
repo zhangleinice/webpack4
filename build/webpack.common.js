@@ -35,24 +35,6 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                 }
-            },
-            // 使用less-loader，还需安装 less
-            {
-                test: /\.less$/,
-                use: [
-                    'style-loader', 
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            // 在less中@import less,重新从后面两个loader执行
-                            importLoaders: 2,     // default 0
-                            // css模块化，防止全局样式冲突
-                            // modules: true,
-                        }      
-                    },
-                    'less-loader', 
-                    'postcss-loader'
-                ]
             }
         ]
     },
@@ -63,6 +45,7 @@ module.exports = {
         new CleanWebpackPlugin(),
     ],
     optimization: {
+        usedExports: true,
         // 通常设置成这样就可以了
         splitChunks: {
             // 默认async 异步加载性能好
@@ -91,9 +74,6 @@ module.exports = {
         }
     },
     output: {
-        // 对应entry的文件，生成多个文件
-        filename: '[name].js',
-        // __dirname当前目录
-        path: path.resolve(__dirname, '../dist')    
-    },
+        path: path.resolve(__dirname, '../dist') 
+    }
 }

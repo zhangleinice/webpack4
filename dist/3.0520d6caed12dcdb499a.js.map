@@ -1,0 +1,1 @@
+{"version":3,"file":"3.0520d6caed12dcdb499a.js","sources":["webpack:///./src/click.js"],"sourcesContent":["const handleClick = () => {\n    const ele = document.createElement('div');\n    ele.innerHTML = 'hello ,rocky';\n    document.body.appendChild(ele);\n}\n\nexport default handleClick;"],"mappings":";;;;;;AAAA;AAAA;AACA;AACA;AACA;AACA;AACA;AACA;;;;A","sourceRoot":""}

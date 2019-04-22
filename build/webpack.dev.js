@@ -33,7 +33,33 @@ const devConfig = {
     // tree shaking; product已经默认写好，则可以不用写了
     optimization: {
         usedExports: true
-    }
+    },
+    module: {
+        rules: [
+            // 使用less-loader，还需安装 less
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader', 
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            // 在less中@import less,重新从后面两个loader执行
+                            importLoaders: 2,     // default 0
+                            // css模块化，防止全局样式冲突
+                            // modules: true,
+                        }      
+                    },
+                    'less-loader', 
+                    'postcss-loader'
+                ]
+            }
+        ]
+    },
+    output: {
+        // 对应entry的文件，生成多个文件
+        filename: '[name].js',
+    },
 }
 
 module.exports = webpackMerge(devConfig, commonConfig);
