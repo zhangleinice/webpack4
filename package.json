@@ -10,6 +10,7 @@
     "@babel/polyfill": "^7.4.3",
     "@babel/runtime": "^7.4.3",
     "@babel/runtime-corejs2": "^7.4.3",
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "lodash": "^4.17.11"
   },
@@ -33,6 +34,7 @@
     "postcss-loader": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",

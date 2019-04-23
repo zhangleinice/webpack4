@@ -1,6 +1,7 @@
 import avatar from './assets/24npgmv.jpg';
 // import  styles from './assets/index.less';
 import './assets/index.less';
+import axios from 'axios';
 // 写业务逻辑
 // "useBuiltIns": "usage"设置后，这段代码也可以去掉
 // import "@babel/polyfill";
@@ -10,6 +11,9 @@ import ReactDom from 'react-dom';
 // import _ from 'lodash';
 import { add } from './common/index.js';
 
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './page/home.js';
+import List from './page/list.js';
 
 class App extends Component {
     constructor(props) {
@@ -19,15 +23,25 @@ class App extends Component {
     componentDidMount() {
         // console.log(_.join(["xxx", "yyy", "zzz"], "***"))
         console.log(add(1, 2));
+        axios.get('/react/api/header.json').then(res => {
+            console.log(res);
+        })
     }
     render() {
         return (
-            <div>hello react!</div>
+            <div>
+                <BrowserRouter>
+                    <div>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/list" exact component={List}/>
+                    </div>
+                </BrowserRouter>
+            </div>
         );
     }
 }
 
-// ReactDom.render(<App/>, document.getElementById('root'));
+ReactDom.render(<App/>, document.getElementById('root'));
 
 // export default App;
 
@@ -74,24 +88,24 @@ const render = () => {
 // })
 
 // 异步加载lodash
-async function getComponent() {
-	const { default: _ } = await import(/* webpackChunkName:"lodash" */'lodash');
-	const element = document.createElement('div');
-	element.innerHTML = _.join(['Dell', 'Lee'], '-');
-	return element;
-}
+// async function getComponent() {
+// 	const { default: _ } = await import(/* webpackChunkName:"lodash" */'lodash');
+// 	const element = document.createElement('div');
+// 	element.innerHTML = _.join(['Dell', 'Lee'], '-');
+// 	return element;
+// }
 
-document.addEventListener('click', () =>{
-	getComponent().then(element => {
-		document.body.appendChild(element);
-	});
-})
+// document.addEventListener('click', () =>{
+// 	getComponent().then(element => {
+// 		document.body.appendChild(element);
+// 	});
+// })
 
 
 
 // 提高代码利用率，点击的时候才加载
-document.addEventListener('click', () => {
-    return import(/* webpackPrefetch: true */ './click').then(({default: func}) => {
-        func()
-    })
-})
+// document.addEventListener('click', () => {
+//     return import(/* webpackPrefetch: true */ './click').then(({default: func}) => {
+//         func()
+//     })
+// })

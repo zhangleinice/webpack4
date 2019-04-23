@@ -19,10 +19,13 @@ const devConfig = {
         contentBase: './dist/',
         // 开启gzip压缩
         compress: true,
-        // 本地开发跨域配置
+        // 单页应用路由问题，使用HTML5历史记录API时，线上环境需要后端nginx配置
+        historyApiFallback: true,
+        // 本地开发跨域配置,请求转发
         proxy: {
-            '/api': {
-                target: 'http://testfeapi.colourfulchina.com:8080'
+            '/react/api/': {
+                target: 'http://www.dell-lee.com',
+                changeOrigin: true
             }
         },
         // Hot Module Replacement
