@@ -49,9 +49,10 @@
 * 打包生成的文件放在内存里面
 1. open
 2. compress
-3. proxy
+3. proxy: 跨域代理
 4. contentBase
 5. hot
+6. historyApiFallback：  单页应用路由问题，使用HTML5历史记录API时，线上环境需要后端nginx配置
 
 ### Hot Module Replacement 模块热替换
 1. devServer.hot设置true
@@ -157,6 +158,18 @@
 ```
 ### 环境变量的使用
 
+### eslint
+1. npx eslint --init
+2. eslint-loader会影响打包速度
+
+### webpack性能优化
+1. 升级node，npm，yarn
+2. 缩小loader使用范围，使用include，exclude
+3. 少使用plugin，且确保plugin可靠
+4. 配置resolve
+5. **第三方模块打包优化** 
+6. **多进程 happypack，使用多个cpu**
+7. 合理使用source-map
 
 
 

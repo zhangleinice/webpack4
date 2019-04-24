@@ -9,13 +9,23 @@ module.exports = {
         home: './src/index.js',
         // common: './src/index.js'
     },
+    // 引入文件忽略文件后缀
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        // 默认index文件，可以不写
+        mainFiles: ['index'],
+        // 文件别名，方便引入深层次的文件
+        // alias: {
+        //     common: path.resolve(__dirname, 'src/a/b/common/'),
+        // }
+    },
     module: {
         rules: [
             {
-                test: /\.js$/, 
+                test: /\.jsx?$/, 
                 // 排除node_modules
                 exclude: /node_modules/, 
-                loader: "babel-loader",
+                loader: "babel-loader"
             },
             {
                 test: /\.(png|jpg|gif)$/,

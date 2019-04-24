@@ -12,8 +12,8 @@ import ReactDom from 'react-dom';
 import { add } from './common/index.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
-import Home from './page/home.js';
-import List from './page/list.js';
+import Home from './page/home.jsx';
+import List from './page/list.jsx';
 
 class App extends Component {
     constructor(props) {
