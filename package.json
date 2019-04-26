@@ -50,6 +50,7 @@
     "server": "node server.js",
     "dev-build": "webpack --profile --json > stats.json --config ./build/webpack.dev.js",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "dev-dll": "webpack --config ./build/webpack.dll.js",
     "build": "webpack --config ./build/webpack.prod.js"
   },
   "author": "",
