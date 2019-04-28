@@ -1,5 +1,4 @@
 const Webpack = require('webpack');
-const path = require('path');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 
@@ -13,7 +12,7 @@ const devConfig = {
         new Webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        port: 3000,
+        port: 9000,
         // 自动打开浏览器
         open: true,
         contentBase: './dist/',
@@ -63,6 +62,6 @@ const devConfig = {
         // 对应entry的文件，生成多个文件
         filename: '[name].js',
     },
-}
+};
 
 module.exports = webpackMerge(devConfig, commonConfig);

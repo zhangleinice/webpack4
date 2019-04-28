@@ -1,7 +1,9 @@
 const path = require('path');
-
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// 向html添加静态资源
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'); 
 
 module.exports = {
     entry: {
@@ -53,6 +55,16 @@ module.exports = {
             template: 'src/index.html'
         }),
         new CleanWebpackPlugin(),
+
+
+        // 第三方库单独打包，提高打包速度
+        new AddAssetHtmlPlugin({ 
+            filepath: require.resolve('../dll/vendors.dll.js') 
+        }),
+        // 判断vendors中是否有第三方库，如果有则使用dll中的库，否则从node_modules中取
+        new webpack.DllReferencePlugin({
+            manifest: path.resolve(__dirname, '../dll/vendors.manifest.json')
+        })
     ],
     optimization: {
         usedExports: true,
@@ -86,4 +98,4 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist') 
     }
-}
+};

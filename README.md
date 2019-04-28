@@ -168,6 +168,8 @@
 3. 少使用plugin，且确保plugin可靠
 4. 配置resolve
 5. **第三方模块打包优化** 
+    - 1. 第三方模块只打包一次
+    - 2. 引入第三方模块dll
 6. **多进程 happypack，使用多个cpu**
 7. 合理使用source-map
 
