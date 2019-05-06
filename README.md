@@ -157,6 +157,11 @@
     }),
 ```
 ### 环境变量的使用
+```js
+    // NODE_ENV在package中设置，process  node中的全局变量
+    const ENV = process.env.NODE_ENV;
+    const isDev = ENV === 'production' ? false : true;
+```
 
 ### eslint
 1. npx eslint --init
@@ -172,6 +177,76 @@
     - 2. 引入第三方模块dll
 6. **多进程 happypack，使用多个cpu**
 7. 合理使用source-map
+
+### 编写一个loader（官网文档api）
+* 帮助我们去处理模块
+* 源代码需要包装，可以自定义loader
+```js
+    if(NODE全局变量){
+        replace('', '英文'）
+    }else {
+        replace('', '中文')
+    }
+```
+```js
+    // 接收一个source文件，返回一个新的文件
+    module.exports = function(source) {
+        return source.replace('hello', 'HELLO');
+    };
+
+    // 只能return一个参数
+    // callback携带额外参数
+    this.callback(
+        err: Error | null,
+        content: string | Buffer,
+        sourceMap?: SourceMap,
+        meta?: any
+    );
+
+    // this读取传入的参数，借助loader-utils
+    const loaderUtils = require('loader-utils');
+    module.exports = function(source) {
+        const options = loaderUtils.getOptions(this);
+
+        // 异步
+        const callback = this.async();
+
+        setTimeout(() => {
+            const result = source.replace('dell', options.name);
+            callback(null, result);
+        }, 1000);
+    }
+```
+
+### 编写一个plugin
+* 在打包的某个时间点去执行plugin
+```js
+    class CopyrightWebpackPlugin {
+
+        apply(compiler) {
+
+            compiler.hooks.compile.tap('CopyrightWebpackPlugin', (compilation) => {
+                console.log('compiler');
+            })
+            compiler.hooks.emit.tapAsync('CopyrightWebpackPlugin', (compilation, cb) => {
+                // 打包过后生成一个copyright.txt文件
+                compilation.assets['copyright.txt']= {
+                    source: function() {
+                        return 'copyright by dell lee'
+                    },
+                    size: function() {
+                        return 21;
+                    }
+                };
+                cb();
+            })
+        }
+    }
+
+module.exports = CopyrightWebpackPlugin;
+```
+
+
 
 
 

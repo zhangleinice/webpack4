@@ -2,6 +2,12 @@ const Webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
 
+// NODE_ENV在package中设置，process  node中的全局变量
+console.log(process.env.NODE_ENV);
+
+const ENV = process.env.NODE_ENV;
+const isDev = ENV === 'production' ? false : true;
+
 const devConfig = {
     // development打包的文件不会被压缩，production打包会被压缩
     mode: 'development',
